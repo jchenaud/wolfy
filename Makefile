@@ -18,6 +18,10 @@ SRC_NAME = $(SRC_PATH)algo.c\
 		   $(SRC_PATH)main.c\
 		   $(SRC_PATH)graph.c\
 		   $(SRC_PATH)parsing.c\
+		   $(SRC_PATH)move.c\
+		   $(SRC_PATH)draw_wall_texture.c\
+		   $(SRC_PATH)weapon.c\
+		   $(SRC_PATH)texture_init.c\
 
 LIBFT_PATH = libft/
 LIBFT_LIB = libft/libft.a

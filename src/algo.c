@@ -4,10 +4,10 @@
 void calcul_image(t_graf *graf)
 {
 int dont_make;
-unsigned int color;
-double dirX = graf->dirX;
-double dirY = graf->dirY; ///initialisation du verteur directeur
-double planeX = graf->PlaneX, planeY = graf->PlaneY; ///Raycaster la deuxieme version du plan de camera
+//unsigned int color;
+double dirx = graf->dirx;
+double diry = graf->diry; ///initialisation du verteur directeur
+double planex = graf->Planex, planey = graf->Planey; ///Raycaster la deuxieme version du plan de camera
  
   //double time = 0; ///Temps de la sequence courante
   //double oldTime = 0; ///Temps de l'image precedente
@@ -27,13 +27,13 @@ double planeX = graf->PlaneX, planeY = graf->PlaneY; ///Raycaster la deuxieme ve
       double cam = 2 * x / (double)(W_W) - 1; ///Coordonner x dans l'espace de la camera
       graf->raypos_x = graf->pos_x;				 ///  Coordonner x de rayon dans l'espace
       graf->raypos_y = graf->pos_y;                 /// Coordonner y de rayon dans l'espace
-      graf->r_dir_x = dirX + planeX * cam;
-      graf->r_dir_y = dirY + planeY * cam;
+      graf->r_dir_x = dirx + planex * cam;
+      graf->r_dir_y = diry + planey * cam;
       ///Dans quelle case de la carte, nous nous situons au debut
       int map_x = (int)(graf->raypos_x);
       int map_y = (int)(graf->raypos_y);
-     // printf("\033[5A\033[Kx: %d\nposX: %f\nPosY: %f\nmapX: %d\nmapY: %d\n", x, graf->pos_x, graf->pos_y, map_x, map_y);
-    // printf("%d\nposX: %f\nPosY: %f\nmapX: %d\nmapY: %d\n", x, graf->pos_x, graf->pos_y, map_x, map_y);
+     // printf("\033[5A\033[Kx: %d\nposx: %f\nPosy: %f\nmapx: %d\nmapy: %d\n", x, graf->pos_x, graf->pos_y, map_x, map_y);
+    // printf("%d\nposx: %f\nPosy: %f\nmapx: %d\nmapy: %d\n", x, graf->pos_x, graf->pos_y, map_x, map_y);
 
       ///Longueur des rayons de la position actuelle au prochain x ou y
       double dist_v; ///Distance entre le joueur et 1e prochain mur vertical
@@ -47,7 +47,7 @@ double planeX = graf->PlaneX, planeY = graf->PlaneY; ///Raycaster la deuxieme ve
       int inc_x; ///si gauche x=-1, si droite x=+1
       int inc_y; ///si avance y=+1 et si recule y=-1
  
-      int touche = 0; ///Y a-t-il un mur de detecter?
+      int touche = 0; ///y a-t-il un mur de detecter?
      // int graf->vertical0; ///est-ce un mur horizontal ou vertical? v = 0 et h = 1
  
       ///Calcul le sens de la prochaine etape et la distance entre le joueur et le mur vertical le plus proche en fonction de la prochaine etape x
@@ -115,10 +115,10 @@ double planeX = graf->PlaneX, planeY = graf->PlaneY; ///Raycaster la deuxieme ve
       int hauteurMur = ((int)(W_H / graf->wall_d));
  
       ///Calculer le plus bas et le plus eleve des pixels a remplir dans la bande actuelle
-      int drawStart = -hauteurMur / 2 + W_H / 2;
-      if(drawStart < 0)drawStart = 0;
-      int drawEnd = hauteurMur / 2 + W_H / 2;
-      if(drawEnd >= W_H)drawEnd = W_H - 1;
+      int draw_start = -hauteurMur / 2 + W_H / 2;
+      if(draw_start < 0)draw_start = 0;
+      int draw_end = hauteurMur / 2 + W_H / 2;
+      if(draw_end >= W_H)draw_end = W_H - 1;
  
       /// Definition de la couleur des murs
     //  Uint8 colorR;
@@ -136,25 +136,25 @@ double planeX = graf->PlaneX, planeY = graf->PlaneY; ///Raycaster la deuxieme ve
        if (graf->map[map_y][map_x] == 1)
       {
       		//dont_make = 1;
-      		color = ft_basic_wall(map_x,map_y,graf);//= 0x10000 * 255 + 0x100 * 0 + 0;  break; ///rouge
-      		draw_wall(x, drawStart, drawEnd, color,graf);
+      		ft_basic_wall(map_x,map_y,graf);//= 0x10000 * 255 + 0x100 * 0 + 0;  break; ///rouge
+      		draw_wall(x, draw_start, draw_end,graf);
       }
       else
       {
       	graf->map_value = graf->map[map_y][map_x];
      	ft_texture_maker(graf);
-		draw_wall_texture(x, drawStart,drawEnd,graf);
+		draw_wall_texture(x, draw_start,draw_end,graf);
 
       //	break;
       }
       // if (graf->map[map_y][map_x] == 1)
       // {
       // 		dont_make = 1;
-      // 		color = ft_basic_wall(map_x,map_y,dirX,dirY,graf->vertical0);//= 0x10000 * 255 + 0x100 * 0 + 0;  break; ///rouge
+      // 		color = ft_basic_wall(map_x,map_y,dirx,diry,graf->vertical0);//= 0x10000 * 255 + 0x100 * 0 + 0;  break; ///rouge
       // }
       // if (dont_make == 0) 
       // 	printf("wtf value %d mapx = %d mapy = %d \n",graf->map[map_y][map_x],map_x,map_y);
-      // draw_wall(x, drawStart, drawEnd, color);
+      // draw_wall(x, draw_start, draw_end, color);
  
       // ///On applique une couleur differente pour les murs verticaux (sinon on ne "ressent pas" la 3D)
        // if (graf->vertical0 == 1)
@@ -164,7 +164,7 @@ double planeX = graf->PlaneX, planeY = graf->PlaneY; ///Raycaster la deuxieme ve
        //     color /= 2;
        // }
       ///Dessine les pixels de l'ecran par ligne verticale
-      //draw_wall(x, drawStart, drawEnd, color);
+      //draw_wall(x, draw_start, draw_end, color);
 	//}
      // printf("G PRINT\n");
     } ///Fin de la boucle for

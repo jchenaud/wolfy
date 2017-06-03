@@ -17,7 +17,7 @@ typedef struct		s_image
 {
 	int				width;
 	int				height;
-	char			*buffer;
+	char			*buff;
 	//float			vertexes[8];
 	//struct s_image	*next;
 }					t_image;
@@ -29,14 +29,28 @@ typedef struct		s_image
 // }
 // t_map;
 
+typedef struct s_text_help
+{
+	int texturechute;
+	int chute;
+	int dat;
+	double ratio;
+	double add;
+	int size_img;
+	int size_text;
+	int texy;
+	int texx;
+	double wallx;
+	int t;
+}				t_text_help;
+
 typedef struct 	s_vec
 {
 	double raypos_x;
 	double raypos_y;
 	double r_dir_x;
 	double r_dir_y;
-}
-				t_vec;
+}				t_vec;
 
 
 typedef struct	s_graf
@@ -47,13 +61,16 @@ typedef struct	s_graf
 	void		*win;
 	t_image		*img;
 	int			*push;
+	unsigned int color;
 	float		pos_x;
 	float		pos_y;
+	float		move_speed;
+	float 		rot_speed;
 	//float		angle;
-	float 		dirX;
-	float		dirY;
-	double		PlaneX;
-	double 		PlaneY;
+	float 		dirx;
+	float		diry;
+	double		Planex;
+	double 		Planey;
 	int 		texture_init;
 	t_image		*amobox;
 	t_image     **text;
@@ -99,18 +116,26 @@ int			key_on(int key, t_graf *graf);
 int			main_loop(t_graf *graf);
 void		push(t_graf *graf);
 void		ft_map(const int fd,t_graf *graf);
-void 	init(int ac, char **av,t_graf *graf);
+void 		init(int ac, char **av,t_graf *graf);
+void		ft_rotate(t_graf *graf);
+//static void rotate_left(t_graf *graf);
+void		ft_lateral_move(t_graf *graf);
+void    	ft_move(t_graf *graf);
+
+
+
 //t_graf		init(int ac, char **av);
 int 		main(int ac, char **av);
 void 		calcul_image(t_graf *graf);
 void 		ft_trace_sky();
-void 	draw_wall(int x, int drawStart, int drawEnd, unsigned int color, t_graf *graf);
-unsigned int ft_basic_wall(int map_x, int map_y,t_graf *graf);
+void 	draw_wall(int x, int draw_start, int draw_end, t_graf *graf);
+void	ft_basic_wall(int map_x, int map_y,t_graf *graf);
 void	ft_texture_maker(t_graf *graf);
 void   draw_wall_texture(int x, int min, int max, t_graf *graf);
 void	ft_weapon (t_graf *graf);
 void    ft_spawn(t_graf *graf);
 void ft_interface (t_graf *graf);
+
 
 
 

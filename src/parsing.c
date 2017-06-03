@@ -18,7 +18,7 @@ static char	*first_iteration(int fd, char *line, t_graf *graf)
 
 	c = 0;
 	graf->nb_l = ft_atoi(line);
-	if(!(graf->map = (int**)malloc(sizeof(int *) * graf->nb_l)))
+	if (!(graf->map = (int**)malloc(sizeof(int *) * graf->nb_l)))
 		return (NULL);
 	while (line[c] >= '0' && line[c] <= '9')
 		c++;
@@ -34,16 +34,13 @@ void		ft_map(const int fd, t_graf *graf)
 	int		c;
 	int		y;
 	int		x;
-	
-//	if(!(line = malloc(sizeof(char))))
-//		return;
-//	line = NULL; // atention rajour quanf makefile
-	y = 0;
-	while (get_next_line(fd, &line) == 1)
-	{			
+
+	y = -1;
+	while (++y < 2147483647 && get_next_line(fd, &line) == 1)
+	{
 		if (y == 0)
 			line = first_iteration(fd, line, graf);
-		if(!(graf->map[y] = (int*)malloc(sizeof(int) * graf->size)))
+		if (!(graf->map[y] = (int*)malloc(sizeof(int) * graf->size)))
 			return ;
 		c = 0;
 		x = 0;
@@ -55,16 +52,9 @@ void		ft_map(const int fd, t_graf *graf)
 			(c < graf->size * 2) ? c++ : 0;
 			x++;
 		}
-		y++;
-		printf("line = %s \n",line);
 		if (line)
 			ft_strdel(&line);
 	}
-	//ft_strdel(&line);
-	//free(*line);
-	//printf("line = %s \n",line);
-	//printf("line add =%p \n",line);
-	//free(line);
 }
 
 void		ft_spawn(t_graf *graf)
@@ -88,4 +78,5 @@ void		ft_spawn(t_graf *graf)
 		}
 		y++;
 	}
+	exit (0);
 }

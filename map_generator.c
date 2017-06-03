@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-/*
+
 int main(int argc, char** argv)
 {
 	int fd;
@@ -17,6 +17,8 @@ int main(int argc, char** argv)
 	{
 		y_size = ft_atoi(argv[1]);
 		x_size = ft_atoi(argv[2]);
+		if (y_size > 2000 || x_size > 2000)
+			return (0);
 		system("rm -f map.gen");
 		fd = open("map.gen", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
 		ft_putnbr_fd(y_size, fd);
@@ -43,4 +45,3 @@ int main(int argc, char** argv)
 		close(fd);
 	}
 }
-*/
