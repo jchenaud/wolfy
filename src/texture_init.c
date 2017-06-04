@@ -19,7 +19,8 @@ void	ft_texture_maker(t_graf *graf)
 
 	if (graf->texture_init == 0)
 	{
-		graf->text = (t_image**)malloc(sizeof(t_image) * NB_TEXTURE);
+		if (!(graf->text = (t_image**)malloc(sizeof(t_image) * NB_TEXTURE)))
+			exit (0);
 		graf->text[0] = (t_image*)mlx_xpm_file_to_image(
 				graf->mlx, "texture/brick64.xpm", &x, &y);
 		graf->text[1] = (t_image*)mlx_xpm_file_to_image(

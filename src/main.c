@@ -21,20 +21,20 @@ void	init(int ac, char **av, t_graf *graf)
 	if (ac < 2)
 		exit(0);
 	ft_map(open(av[1], O_RDONLY), graf);
-	//graf->texture_init = 0;
 	ft_spawn(graf);
+	//while (1);
 	if(!(graf->push = (int *)malloc(sizeof(int) * 270)))
 		exit (0);
-	while (++i < 270)
+	while (++i <= 270)
 		graf->push[i] = 0;
-	while (1);
-
+	//while (1);
 	graf->dirx = 1;
 	graf->diry = 0;
 	graf->Planex = 0;
 	graf->Planey = 0.66;
 	graf->weapon_init = 0;
-	graf->time = -22;
+	graf->texture_init = 0;
+	graf->tym = -22;
 	if (!(graf->nb_ball_c = (char*)malloc(sizeof(char) * 3)))
 		exit(0);
 	graf->nb_ball = 32;
@@ -54,5 +54,5 @@ int		main(int ac, char **av)
 	mlx_key_hook(graf->win, key_off, graf);
 	mlx_loop_hook(graf->mlx, main_loop, graf);
 	mlx_loop(graf->mlx);
-	return (0);
+	exit (0);
 }

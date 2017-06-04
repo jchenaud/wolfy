@@ -23,6 +23,7 @@ SRC_NAME = $(SRC_PATH)algo.c\
 		   $(SRC_PATH)weapon.c\
 		   $(SRC_PATH)texture_init.c\
 
+
 LIBFT_PATH = libft/
 LIBFT_LIB = libft/libft.a
 

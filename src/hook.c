@@ -29,11 +29,11 @@ int			main_loop(t_graf *graf)
 {
 	int music;
 
-	music = ((clock() / CLOCKS_PER_SEC) - graf->time > 21) ? 1 : 0;
+	music = ((clock() / CLOCKS_PER_SEC) - graf->tym > 21) ? 1 : 0;
 	if (music == 1)
 	{
 		system("afplay sound/22-u-r-a-hero.mp3 &");
-		graf->time = (clock() / CLOCKS_PER_SEC);
+		graf->tym = (clock() / CLOCKS_PER_SEC);
 	}
 	push(graf);
 	ft_trace_sky(graf);

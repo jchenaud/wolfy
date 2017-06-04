@@ -79,7 +79,7 @@ typedef struct	s_graf
 	int 		door_not_far;
 	int 		door_y;
 	int 		door_x;
-	int 		time;
+	int 		tym;
 	char		*nb_ball_c;
 	int 		nb_ball;
 	// t_image		*text1;
@@ -123,6 +123,7 @@ void		ft_lateral_move(t_graf *graf);
 void    	ft_move(t_graf *graf);
 
 
+int				ft_get_next_line(int const fd, char **line);
 
 //t_graf		init(int ac, char **av);
 int 		main(int ac, char **av);

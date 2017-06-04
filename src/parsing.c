@@ -19,7 +19,7 @@ static char	*first_iteration(int fd, char *line, t_graf *graf)
 	c = 0;
 	graf->nb_l = ft_atoi(line);
 	if (!(graf->map = (int**)malloc(sizeof(int *) * graf->nb_l)))
-		return (NULL);
+		exit(0);
 	while (line[c] >= '0' && line[c] <= '9')
 		c++;
 	graf->size = ft_atoi(&line[c]);
@@ -36,12 +36,13 @@ void		ft_map(const int fd, t_graf *graf)
 	int		x;
 
 	y = -1;
+	(fd == -1) ? exit(0) : 0;
 	while (++y < 2147483647 && get_next_line(fd, &line) == 1)
 	{
 		if (y == 0)
 			line = first_iteration(fd, line, graf);
 		if (!(graf->map[y] = (int*)malloc(sizeof(int) * graf->size)))
-			return ;
+			exit(0);
 		c = 0;
 		x = 0;
 		while (c < graf->size * 2)
@@ -52,9 +53,9 @@ void		ft_map(const int fd, t_graf *graf)
 			(c < graf->size * 2) ? c++ : 0;
 			x++;
 		}
-		if (line)
-			ft_strdel(&line);
+		(line) ? ft_strdel(&line) : 0;
 	}
+	close(fd);
 }
 
 void		ft_spawn(t_graf *graf)
@@ -78,5 +79,5 @@ void		ft_spawn(t_graf *graf)
 		}
 		y++;
 	}
-	exit (0);
+	exit(0);
 }
