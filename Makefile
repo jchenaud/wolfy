@@ -22,6 +22,10 @@ SRC_NAME = $(SRC_PATH)algo.c\
 		   $(SRC_PATH)draw_wall_texture.c\
 		   $(SRC_PATH)weapon.c\
 		   $(SRC_PATH)texture_init.c\
+		   $(SRC_PATH)map_generator.c\
+		   $(SRC_PATH)usage.c\
+
+
 
 
 LIBFT_PATH = libft/

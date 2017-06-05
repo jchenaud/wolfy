@@ -20,7 +20,7 @@ static void	init_w(t_graf *graf)
 
 	nb_frame = 2;
 	if (!(graf->weapon = (t_image**)malloc(sizeof(t_image) * nb_frame)))
-		exit (0);
+		exit(0);
 	graf->weapon[0] = (t_image*)mlx_xpm_file_to_image(
 			graf->mlx, "sprite/frame.xpm", &x, &y);
 	graf->weapon[1] = (t_image*)mlx_xpm_file_to_image(
@@ -42,7 +42,7 @@ static void	shot_end(t_graf *graf)
 }
 
 void		ft_weapon(t_graf *graf)
-{
+{	
 	int k;
 
 	k = 0;

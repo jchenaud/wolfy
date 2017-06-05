@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   usage.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/04 23:44:23 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/06/04 23:44:38 by jchenaud         ###   ########.fr       */
+/*   Created: 2017/06/05 02:11:31 by jchenaud          #+#    #+#             */
+/*   Updated: 2017/06/05 02:11:36 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "wolf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft.h"
-
-# define BUF_SIZE		1
-# define SPILL_MULT		2
-# define MAX_FD			1000
-
-typedef struct		s_stock
+void	use(void)
 {
-	char			*spill;
-	long			length;
-	long			lu;
-	int				read_ret;
-	char			*line_end;
-}					t_stock;
+	char *line;
 
-int					get_next_line(int fd, char **line);
-
-#endif
+	line = "Usage : ./wolf3d map";
+	ft_putendl(line);
+	line = "map (good map its better :)";
+	ft_putendl(line);
+	line = "Basic map : Map_test/";
+	ft_putendl(line);
+	line = "you can generate map : ./wolf3d size_x size_y";
+	ft_putendl(line);
+	line = "size_x  & size_y < 2000";
+	ft_putendl(line);
+	exit(0);
+}

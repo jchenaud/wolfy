@@ -27,14 +27,14 @@ int			key_on(int key, t_graf *graf)
 
 int			main_loop(t_graf *graf)
 {
-	int music;
+	//int music;
 
-	music = ((clock() / CLOCKS_PER_SEC) - graf->tym > 21) ? 1 : 0;
-	if (music == 1)
-	{
-		system("afplay sound/22-u-r-a-hero.mp3 &");
-		graf->tym = (clock() / CLOCKS_PER_SEC);
-	}
+	// music = ((clock() / CLOCKS_PER_SEC) - graf->tym > 21) ? 1 : 0;
+	// if (music == 1)
+	// {
+	// 	system("afplay sound/22-u-r-a-hero.mp3 &");
+	// 	graf->tym = (clock() / CLOCKS_PER_SEC);
+	// }
 	push(graf);
 	ft_trace_sky(graf);
 	calcul_image(graf);
@@ -54,16 +54,15 @@ void		push(t_graf *graf)
 	ft_rotate(graf);
 	if (graf->push[W] && graf->door_not_far == 1)
 		graf->map[graf->door_y][graf->door_x] = 0;
-	if (graf->push[SPACE] && graf->frame_shot == 0 != 0)
+	if (graf->push[SPACE] && graf->frame_shot == 0)
 		graf->shot = 1;
 	if (graf->push[R] != 0)
 	{
+    graf->frame_shot = 0;
+    graf->shot = 0;
 		graf->nb_ball = 32;
 		system("afplay sound/relod.wav &");
 	}
 	if (graf->push[ESC])
-	{
-		system("kill -f afplay");
 		exit(0);
-	}
 }

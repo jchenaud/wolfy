@@ -39,22 +39,21 @@ void		ft_map(const int fd, t_graf *graf)
 	(fd == -1) ? exit(0) : 0;
 	while (++y < 2147483647 && get_next_line(fd, &line) == 1)
 	{
-		if (y == 0)
-			line = first_iteration(fd, line, graf);
+		line = (y == 0) ? first_iteration(fd, line, graf) : line;
 		if (!(graf->map[y] = (int*)malloc(sizeof(int) * graf->size)))
 			exit(0);
 		c = 0;
-		x = 0;
-		while (c < graf->size * 2)
+		x = -1;
+		while (c < graf->size * 2 && ++x < 2147483647)
 		{
 			graf->map[y][x] = ft_atoi(&line[c]);
 			while (line[c] >= '0' && line[c] <= '9')
 				c++;
 			(c < graf->size * 2) ? c++ : 0;
-			x++;
 		}
 		(line) ? ft_strdel(&line) : 0;
 	}
+	free(line);
 	close(fd);
 }
 

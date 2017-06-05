@@ -18,15 +18,15 @@ static	void	rotate_left(t_graf *graf)
 	double old_planx;
 
 	old_dx = graf->dirx;
-	old_planx = graf->Planex;
+	old_planx = graf->planex;
 	graf->dirx = graf->dirx * cos(-graf->rot_speed) -
 		graf->diry * sin(-graf->rot_speed);
 	graf->diry = old_dx * sin(-graf->rot_speed) +
 		graf->diry * cos(-graf->rot_speed);
-	graf->Planex = graf->Planex * cos(-graf->rot_speed) -
-		graf->Planey * sin(-graf->rot_speed);
-	graf->Planey = old_planx * sin(-graf->rot_speed) +
-		graf->Planey * cos(-graf->rot_speed);
+	graf->planex = graf->planex * cos(-graf->rot_speed) -
+		graf->planey * sin(-graf->rot_speed);
+	graf->planey = old_planx * sin(-graf->rot_speed) +
+		graf->planey * cos(-graf->rot_speed);
 }
 
 void			ft_rotate(t_graf *graf)
@@ -39,16 +39,16 @@ void			ft_rotate(t_graf *graf)
 	if (graf->push[D] != 0)
 	{
 		old_dx = graf->dirx;
-		old_planx = graf->Planex;
+		old_planx = graf->planex;
 		graf->dirx = graf->dirx * cos(graf->rot_speed) -
 			graf->diry * sin(graf->rot_speed);
 		graf->diry = old_dx * sin(graf->rot_speed) +
 			graf->diry * cos(graf->rot_speed);
-		old_planx = graf->Planex;
-		graf->Planex = graf->Planex * cos(graf->rot_speed) -
-			graf->Planey * sin(graf->rot_speed);
-		graf->Planey = old_planx * sin(graf->rot_speed) +
-			graf->Planey * cos(graf->rot_speed);
+		old_planx = graf->planex;
+		graf->planex = graf->planex * cos(graf->rot_speed) -
+			graf->planey * sin(graf->rot_speed);
+		graf->planey = old_planx * sin(graf->rot_speed) +
+			graf->planey * cos(graf->rot_speed);
 	}
 }
 
