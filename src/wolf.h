@@ -6,12 +6,12 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 07:19:02 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/06/05 07:34:07 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/06 06:28:58 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef W_W
-# define W_W 1280
+#ifndef WOLF_H
+# define WOLF_H
 # include "../minilibx_siera/mlx.h"
 # include "key_define.h"
 # include <stdio.h>
@@ -20,8 +20,10 @@
 # include <math.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
+# define W_W 1280
 # define W_H 720
 # define NB_TEXTURE 8
+# define NB_TX_FRAME 39
 
 typedef struct		s_image
 {
@@ -81,6 +83,7 @@ typedef struct		s_graf
 	t_image			*amobox;
 	t_image			**text;
 	t_image			**weapon;
+	t_image			**anim;
 	int				weapon_init;
 	int				door_not_far;
 	int				door_y;
@@ -95,6 +98,8 @@ typedef struct		s_graf
 	double			wall_d;
 	int				vertical0;
 	int				frame_shot;
+	int				frame_text;
+	int				new_frame;
 	int				shot;
 	int				size;
 	int				nb_l;
@@ -122,6 +127,7 @@ void				draw_wall_texture(int x, int min, int max, t_graf *graf);
 void				ft_weapon (t_graf *graf);
 void				ft_spawn(t_graf *graf);
 void				ft_interface(t_graf *graf);
-
+void				draw_wall_animtexture(int x, int min,
+							int max, t_graf *graf);
 void				map_gen(int argc, char **argv);
 #endif

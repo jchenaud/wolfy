@@ -6,7 +6,7 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 00:26:46 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/05/31 01:51:32 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/05 23:11:51 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	init_2(t_graf *graf)
 	graf->texture_init = 0;
 	graf->tym = -22;
 	graf->frame_shot = 0;
-
+	graf->frame_text = 0;
 }
 
 static void	init(int ac, char **av, t_graf *graf)

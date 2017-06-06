@@ -6,7 +6,7 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 06:33:34 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/06/03 06:54:08 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/05 23:03:06 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	shot_end(t_graf *graf)
 }
 
 void		ft_weapon(t_graf *graf)
-{	
+{
 	int k;
 
 	k = 0;

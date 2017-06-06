@@ -6,7 +6,7 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 03:09:31 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/06/03 03:09:57 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/05 23:15:20 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,17 @@ int			key_on(int key, t_graf *graf)
 
 int			main_loop(t_graf *graf)
 {
-	//int music;
+	int music;
 
-	// music = ((clock() / CLOCKS_PER_SEC) - graf->tym > 21) ? 1 : 0;
-	// if (music == 1)
-	// {
-	// 	system("afplay sound/22-u-r-a-hero.mp3 &");
-	// 	graf->tym = (clock() / CLOCKS_PER_SEC);
-	// }
+	music = ((clock() / CLOCKS_PER_SEC) - graf->tym > 21) ? 1 : 0;
+	if (music == 1)
+	{
+		system("afplay sound/22-u-r-a-hero.mp3 &");
+		graf->tym = (clock() / CLOCKS_PER_SEC);
+	}
 	push(graf);
 	ft_trace_sky(graf);
+	graf->new_frame = 0;
 	calcul_image(graf);
 	mlx_put_image_to_window(graf->mlx, graf->win, graf->img, 0, 0);
 	free(graf->nb_ball_c);
@@ -58,8 +59,8 @@ void		push(t_graf *graf)
 		graf->shot = 1;
 	if (graf->push[R] != 0)
 	{
-    graf->frame_shot = 0;
-    graf->shot = 0;
+		graf->frame_shot = 0;
+		graf->shot = 0;
 		graf->nb_ball = 32;
 		system("afplay sound/relod.wav &");
 	}

@@ -6,7 +6,7 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 06:07:15 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/06/05 06:30:04 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/06 06:27:39 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	find_wall(t_graf *graf)
 
 static void	find_dor(t_graf *graf)
 {
-	if (graf->map[graf->map_y][graf->map_x] == 9 && graf->wall_d < 2)
+	if (graf->map[graf->map_y][graf->map_x] == 8 && graf->wall_d < 2)
 	{
 		graf->door_not_far = 1;
 		graf->door_y = graf->map_y;
@@ -97,12 +97,14 @@ static void	drawing(t_graf *graf, int x)
 		ft_basic_wall(graf->map_x, graf->map_y, graf);
 		draw_wall(x, draw_start, draw_end, graf);
 	}
-	else
+	else if (graf->map[graf->map_y][graf->map_x] < 9)
 	{
 		graf->map_value = graf->map[graf->map_y][graf->map_x];
 		ft_texture_maker(graf);
 		draw_wall_texture(x, draw_start, draw_end, graf);
 	}
+	else
+		draw_wall_animtexture(x, draw_start, draw_end, graf);
 }
 
 void		calcul_image(t_graf *graf)
