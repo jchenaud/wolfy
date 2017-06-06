@@ -130,4 +130,6 @@ void				ft_interface(t_graf *graf);
 void				draw_wall_animtexture(int x, int min,
 							int max, t_graf *graf);
 void				map_gen(int argc, char **argv);
+void				ft_map_check(t_graf *graf);
+
 #endif

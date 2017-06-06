@@ -6,7 +6,7 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 00:14:55 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/05/31 04:18:39 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:15:27 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,26 @@ void		ft_spawn(t_graf *graf)
 		y++;
 	}
 	exit(0);
+}
+
+void		ft_map_check(t_graf *graf)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y < graf->nb_l)
+	{
+		x = 0;
+		while (x < graf->size)
+		{
+			if ((x == 0 || y == 0 || x == graf->size - 1 || y == graf->size - 1)
+				&& (graf->map[y][x] > 9 || graf->map[y][x] <= 0))
+				graf->map[y][x] = 1;
+			else if (graf->map[y][x] > 9 || graf->map[y][x] < 0)
+				graf->map[y][x] = 1;
+			x++;
+		}
+		y++;
+	}
 }

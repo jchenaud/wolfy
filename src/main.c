@@ -6,7 +6,7 @@
 /*   By: jchenaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 00:26:46 by jchenaud          #+#    #+#             */
-/*   Updated: 2017/06/05 23:11:51 by jchenaud         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:12:31 by jchenaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	init(int ac, char **av, t_graf *graf)
 		av[1] = "map.gen";
 	}
 	ft_map(open(av[1], O_RDONLY), graf);
+	ft_map_check(graf);
 	ft_spawn(graf);
 	if (!(graf->push = (int *)malloc(sizeof(int) * 270)))
 		exit(0);
@@ -48,6 +49,12 @@ static void	init(int ac, char **av, t_graf *graf)
 	if (!(graf->nb_ball_c = (char*)malloc(sizeof(char) * 3)))
 		exit(0);
 	graf->nb_ball = 32;
+}
+
+static int	ft_red_cross(void)
+{
+	exit(0);
+	return (0);
 }
 
 int			main(int ac, char **av)
@@ -61,6 +68,7 @@ int			main(int ac, char **av)
 	graf->img = (t_image *)mlx_new_image(graf->mlx, W_W, W_H);
 	init(ac, av, graf);
 	mlx_hook(graf->win, 2, 1, key_on, graf);
+	mlx_hook(graf->win, 17, 0, ft_red_cross, 0);
 	mlx_key_hook(graf->win, key_off, graf);
 	mlx_loop_hook(graf->mlx, main_loop, graf);
 	mlx_loop(graf->mlx);
