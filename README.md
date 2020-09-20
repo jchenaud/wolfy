@@ -9,5 +9,7 @@ make
 ./wolf3d map
 
 ./map_generator x y
+
 la map cera genérée "map.gen"
-![screen-shot](img/img.jpg?raw=true "Title")
+
+![](/img/img.png?raw=true "Title")
