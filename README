@@ -1,0 +1,9 @@
+mon propre moteur en raycasting qui correspond au vieux project wolf3d de 42 
+
+il comporte en plus un generateur de map 
+la gestion des textures / textures annimée
+
+make
+./wolf3d map 
+
+
