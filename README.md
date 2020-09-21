@@ -1,15 +1,16 @@
-mon propre moteur en raycasting qui correspond au vieux project wolf3d de 42
-
-il comporte en plus un generateur de map
-la gestion des textures / textures annimée
-song(music , bruit de tire,rechargement ...)
-annimation de tire
-
+mon propre moteur en raycasting qui correspond au vieux projet wolf3d réalisé lors de mon cursus 42.
+Il comporte en plus du projet imposé :
+ -  un générateur de map,
+ -  la gestion des textures / textures animée 
+ -  son (musique, bruit de tir ,rechargement ...) 
+ -  une animation de tir.
+ 
 make
 ./wolf3d map
 
 ./map_generator x y
 
-la map cera genérée "map.gen"
+La map est générée à la racine  "map.gen"
+
 
 ![](/img/img.png?raw=true "Title")
